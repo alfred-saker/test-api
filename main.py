@@ -22,8 +22,6 @@ def register_api():
   }
   print("\n\n")
 
-  time.sleep(3)
-
   response = requests.post(register_url, json= data_register, headers= headers)
 
   if response.status_code == 201:
@@ -39,6 +37,7 @@ def register_api():
 
   print(response.text)
 
+# Connexion a l'API
 def login_api():
   headers = {
     "Authorization": "Token 883bc0c086e66ec774adce813ffe7d6d1124e943",
@@ -60,8 +59,6 @@ def login_api():
   }
   print("\n")
 
-  time.sleep(3)
-
   response = requests.post(login_url, json=data_login, headers=headers)
 
   if response.status_code == 200:
@@ -80,6 +77,7 @@ def login_api():
       print("Échec de la connexion :", response.status_code)
 
 
+# creation du job application
 def create_job_application():
     url = "https://hire-game.netsach.dev/api/v1.1/job-application-request/"
 
@@ -87,8 +85,11 @@ def create_job_application():
       "Authorization": "Token 883bc0c086e66ec774adce813ffe7d6d1124e943",
       "Content-Type": "application/json"
     }
+
     print("---------------------------------------------------------------\n")
+
     print("--------------------------------APPLICATION CREATED------------------------------------\n")
+
     email = input('Entrer votre email:')
     first_name = input('Entrer votre first name:')
     last_name = input('Entrer votre last name:')
@@ -113,7 +114,9 @@ def create_job_application():
           "application_status":application_status,
         }
         print("Demande d'application créée.:", data_array)
+
         print("\n\n")
+
         print("--------------------------------CONFIRM APPLICATION------------------------------------\n")
 
         if application_url:
@@ -121,6 +124,7 @@ def create_job_application():
             confirmation_url = get_confirmation_url(application_url, headers)
             print(confirmation_url)
             time.sleep(30)
+
             if confirmation_url:
                 confirm_application(confirmation_url['confirmation_url'],headers)
             else:
@@ -130,6 +134,8 @@ def create_job_application():
     else:
         print("Échec de la création de la demande :", response.status_code)
 
+
+# Recuperation de "confirmation_url"
 def get_confirmation_url(application_url, headers):
     response = requests.get(application_url, headers=headers)
     array={}
@@ -145,6 +151,8 @@ def get_confirmation_url(application_url, headers):
     else:
         return None
 
+
+# Confirmation de l'application
 def confirm_application(confirmation_url, headers):
 
   boolean = {
@@ -158,6 +166,7 @@ def confirm_application(confirmation_url, headers):
 
 
 
+# Execution des differentes fonctions
 register_api()
 login_api()
 create_job_application()
