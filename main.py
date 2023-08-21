@@ -125,8 +125,7 @@ def create_job_application(session_token):
             timeout = 0
 
             while (timeout < 60):
-                confirmation_url = get_confirmation_url(
-                    application_url, headers)
+                confirmation_url = get_confirmation_url(application_url, headers)
                 print(confirmation_url["status"])
                 # If the confirmation is complete, then break the loop
                 if (confirmation_url["status"] == "COMPLETED"):
@@ -134,8 +133,7 @@ def create_job_application(session_token):
                 timeout += 1
 
             if confirmation_url["status"] == "COMPLETED":
-                confirm_application(
-                    confirmation_url['confirmation_url'], headers)
+                confirm_application(confirmation_url['confirmation_url'], headers)
             else:
                 print("Échec de confirmation de l'application")
         else:
