@@ -12,12 +12,12 @@ def register_api():
     print("-------------------------------------REGISTER IN API HIRE-GAME----------------------------------------")
     register_url = "https://hire-game.netsach.dev/api/v1.1/auth/register/"
 
-    # email = "alfredkuate@gmail.com"
-    # password1 = "alfred2000"
-    # password2 = "alfred2000"
-    email = input("Entrer votre adresse mail:")
-    password1 = input("Entrer votre mot de passe:")
-    password2 = input("Confirmer votre mot de passe:")
+    email = "alfredkuate@gmail.com"
+    password1 = "alfred2000"
+    password2 = "alfred2000"
+    # email = input("Entrer votre adresse mail:")
+    # password1 = input("Entrer votre mot de passe:")
+    # password2 = input("Confirmer votre mot de passe:")
     data_register = {
         "email": email,
         "password1": password1,
