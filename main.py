@@ -40,6 +40,7 @@ def register_api():
         print("Échec de l'enregistrement :", response.status_code)
 
     print(response.text)
+  
 
 # Connexion a l'API
 
